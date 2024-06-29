@@ -19,7 +19,7 @@ export async function getScreenshot(url, width, height) {
   const page = await getPage();
   await page.setViewport({ width: Number(width) || 1280, height: Number(height) || 720, deviceScaleFactor: 2 });
   await page.goto(url);
-  await new Promise(r => setTimeout(r, 3000));
+  await new Promise(r => setTimeout(r, 5000));
   const file = await page.screenshot();
   return file;
 }
