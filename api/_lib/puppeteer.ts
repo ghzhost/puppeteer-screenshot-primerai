@@ -5,11 +5,10 @@ let _page: Page | null;
 async function getPage() {
   if (_page) return _page;
   const options = {
-    args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(),
-    headless: chromium.headless,
-    ignoreHTTPSErrors: true,
+  args: chromium.args,
+  defaultViewport: chromium.defaultViewport,
+  executablePath: await chromium.executablePath(),
+  headless: chromium.headless,
   };
   const browser = await launch(options);
   _page = await browser.newPage();
