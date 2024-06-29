@@ -5,7 +5,16 @@ let _page: Page | null;
 async function getPage() {
   if (_page) return _page;
   const options = {
-        args: chromium.args,
+    args: [
+      '--disable-web-security',
+      '--disable-setuid-sandbox',
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--disable-gpu'
+  ],
         defaultViewport: null,
         executablePath: await chromium.executablePath(),
         headless: chromium.headless,
