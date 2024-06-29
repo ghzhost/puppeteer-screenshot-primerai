@@ -5,17 +5,8 @@ let _page: Page | null;
 async function getPage() {
   if (_page) return _page;
   const options = {
-    args: [
-      '--disable-web-security',
-      '--disable-setuid-sandbox',
-      '--no-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--no-first-run',
-      '--no-zygote',
-      '--disable-gpu'
-  ],
-        defaultViewport: null,
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath(),
         headless: chromium.headless,
   };
