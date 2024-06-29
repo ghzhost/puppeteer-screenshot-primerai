@@ -21,6 +21,7 @@ export async function getScreenshot(url, width, height) {
   await page.goto(url {
     waitUntil: 'domcontentloaded',
   });
+  await new Promise(r => setTimeout(r, 5000));
   const file = await page.screenshot();
   return file;
 }
