@@ -7,9 +7,7 @@ async function getPage() {
   const options = {
     args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
     defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`
-    ),
+    executablePath: await chromium.executablePath(),
     headless: chromium.headless,
     ignoreHTTPSErrors: true,
   };
@@ -24,7 +22,6 @@ export async function getScreenshot(url, width, height) {
   await page.goto(url, {
     waitUntil: 'domcontentloaded',
   });
-  await new Promise(r => setTimeout(r, 5000));
   const file = await page.screenshot();
   return file;
 }
