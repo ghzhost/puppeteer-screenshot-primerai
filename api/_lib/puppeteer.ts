@@ -6,6 +6,7 @@ async function getPage() {
   if (_page) return _page;
   const options = {
         args: chromium.args,
+        defaultViewport: null,
         executablePath: await chromium.executablePath(),
         headless: chromium.headless,
   };
